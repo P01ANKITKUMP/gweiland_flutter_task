@@ -1,11 +1,21 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gweiland_flutter_task/blocs/appbloc/cubit/app_cubit.dart';
 import 'package:gweiland_flutter_task/blocs/cryptocurrency_listing/bloc/cryptocurrency_bloc.dart';
+import 'package:gweiland_flutter_task/blocs/trigger/cubit/trigger_cubit.dart';
 import 'package:gweiland_flutter_task/utils/common_exports.dart';
 import 'package:gweiland_flutter_task/views/home/home.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: kIsWeb
+        ? HydratedStorage.webStorageDirectory
+        : await getTemporaryDirectory(),
+  );
 
   runApp(ModularApp(module: MyModule(), child: const MyApp()));
 }
@@ -37,6 +47,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<AppCubit>(create: (BuildContext context) => AppCubit()),
         BlocProvider<CryptocurrencyBloc>(
             create: (BuildContext context) => CryptocurrencyBloc()),
+        BlocProvider<TriggerCubit>(
+            create: (BuildContext context) => TriggerCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

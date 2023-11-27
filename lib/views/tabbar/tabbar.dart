@@ -40,8 +40,7 @@ class _TabbarState extends State<Tabbar> {
             return Scaffold(
               body: _screens[state.appmodel.appTab!],
               bottomNavigationBar: Padding(
-                padding:
-                    const EdgeInsets.only(left: 13, right: 13, bottom: 25),
+                padding: const EdgeInsets.only(left: 13, right: 13, bottom: 25),
                 child: Container(
                   decoration: BoxDecoration(
                     color: AppConstants.darkAccent,

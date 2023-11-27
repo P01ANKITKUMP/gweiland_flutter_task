@@ -23,4 +23,9 @@ class AppStrings {
   static const String apply = 'Apply';
   static const String imageHost =
       'https://s2.coinmarketcap.com/static/img/coins/64x64';
+  static const String appbar = 'App bar';
+
+  static const String widget1 = 'Widget 1';
+  static const String widget2 = 'Widget 2';
+  static const String widget3 = 'Widget 3';
 }
